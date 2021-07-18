@@ -1,6 +1,6 @@
 package method.model;
 
-public class Method {
+public class VariableType {
 	
 	// 기본형 매개변수와 참조형 매개변수 구분하기
 	
@@ -16,4 +16,6 @@ public class Method {
 		arr[2] = 99;
 		return arr;
 	}
+	
+	
 }
