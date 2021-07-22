@@ -7,7 +7,7 @@ public class Run {
 	public static void main(String[] args) {
 
 		UncheckedException ue = new UncheckedException();
-		ue.method4();
+		ue.method6();
 	}
 
 }

@@ -1,9 +1,13 @@
 package a_uncheckedException.model;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class UncheckedException {
 	// RuntimeException 
 	// : 코드상의 에러는 없지만 프로그램 실행 시 콘솔창에서 에러 발생
 	// : 예외처리구문이 필수가 아님 (주로 if문으로 에러 해결)
+	// : 5개의 후손클래스가 있다.
 	
 	public void method1() {
 		// 1. ArrayIndexOutOfBoundsException
@@ -89,14 +93,50 @@ public class UncheckedException {
 				System.out.println("10/"+ ran +"="+ result);
 				}catch(ArithmeticException e) {
 					// e.printStackTrace();
-					// System.out.println(e.getMessage());  => 에러 시 발생하는 문자 출력
+					// System.out.println(e.getMessage());  => 에러메세지 불러오
 					System.out.println("10/" + ran +"은 불가능합니다.");
 				}
 			
 		}
 	}
-		
 	
+	public void method5() {
+		// 5. NegativeArraySizeException
+		//   : 배열 크기를 음수로 지정한 경우 발생
+		//   => 배열 크기를 0보다 크게 지정해야 함
+		Scanner sc = new Scanner(System.in);
+		System.out.print("배열의 길이 : ");
+		int num = sc.nextInt();
+		if(num > 0) {
+			int[] arr = new int [num];
+		}else {
+			System.out.println("양수를 입력하세요.");
+		}
+	}
+		
+	public void method6() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("숫자 하나 입력 : " );
+		int num = sc.nextInt();
+		try {
+			int result = 10/ num;
+			System.out.println(result);			
+		}catch(ArithmeticException e) {
+			System.out.println("ArithmeticException : 0으로 나눌 수 없습니다");
+		}catch(InputMismatchException e){
+			System.out.println("InputMismatchException : 숫자만 입력 가능합니다.");
+		}catch(RuntimeException e) {
+			System.out.println("모든 RuntimeException 받아주기 ");
+			// RuntimeException이 위의 클래스들의 부모클래스
+		}catch(Exception e) {
+			System.out.println("모든 Exception 받아주기");
+			// Exception이 모든 예외들의 부모클래스
+			// 부모 클래스의 catch구문이 가장 아래로 가게 작성
+			// 만약 부모 클래스가 가장 위로 간다면? 그 아래의 자식 코드는 실행되지 않는다 !
+		}
+		
+
+	}
 	
 
 }
