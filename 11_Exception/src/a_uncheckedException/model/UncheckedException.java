@@ -133,6 +133,8 @@ public class UncheckedException {
 			// Exception이 모든 예외들의 부모클래스
 			// 부모 클래스의 catch구문이 가장 아래로 가게 작성
 			// 만약 부모 클래스가 가장 위로 간다면? 그 아래의 자식 코드는 실행되지 않는다 !
+		}finally {
+			,
 		}
 		
 
