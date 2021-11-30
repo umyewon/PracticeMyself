@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="randomGenerator" class="com.kh.chap04_autowired.section02_constinjection.xmlconfig.RandomNumberGenerator">
+		<constructor-arg name="startNum" value="1"/>
+		<constructor-arg name="endNum" value="10"/>
+	</bean>
+	
+	<!--  randomNumberGenerator와 MakeRandomString 연결 -->
+	<bean id="makeRandomString" class="com.kh.chap04_autowired.section02_constinjection.xmlconfig.MakeRandomString">
+		<constructor-arg name="random"  ref="randomGenerator"/>
+	</bean>
+
+
+</beans>

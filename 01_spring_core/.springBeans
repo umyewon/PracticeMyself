@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.15.202012132206-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/com/kh/chap01_bean_factory/xmlconfig/spring-context.xml</config>
+		<config>src/com/kh/chap02_component_scan/xmlconfig/config/spring-context1.xml</config>
+		<config>src/com/kh/chap02_component_scan/xmlconfig/config/spring-context2.xml</config>
+		<config>src/com/kh/chap03_dependency_injection/xmlconfig/config/spring-context.xml</config>
+		<config>src/com/kh/chap04_autowired/section02_constinjection/xmlconfig/config/spring-context.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
