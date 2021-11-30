@@ -12,7 +12,8 @@ public class Application {
 		 */
 		
 		ApplicationContext context 
-			= new GenericXmlApplicationContext("com/kh/chap01_bean_factory/xmlconfig/spring-context.xml");  // 설정 파일 읽어올 수 있게 디렉토리 설정 (슬래시로 구분)
+			= new GenericXmlApplicationContext("com/kh/chap01_bean_factory/xmlconfig/spring-context.xml");  
+												// 설정 파일 읽어올 수 있게 디렉토리 설정 (슬래시로 구분)
 		
 		/* context 생성 시 설정 정보를 읽어왔기 때문에 컨테이너는 bean으로 등록한 인스턴스를 
 		 * 컨테이너의 라이프 사이클이 유지되는 동안 유지함 

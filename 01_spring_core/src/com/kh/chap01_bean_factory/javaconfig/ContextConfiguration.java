@@ -10,7 +10,7 @@ public class ContextConfiguration {
 	
 	/* @Bean : bean 등록을 위해 사용 
 	 * @Bean(name="member") 혹은 @Bean("member")을 이용하여  bean의 id 설정 가능
-	 * bean의 이름을 지정하지 않으면 메소드의 이름을 bean의 id로 자동 인식
+	 * bean의 이름을 지정하지 않으면 메소드의 이름을 bean의 id로 자동 인식 (아래의 getMember)
 	 * */
 	@Bean(name="member")
 	public Member getMember() {
