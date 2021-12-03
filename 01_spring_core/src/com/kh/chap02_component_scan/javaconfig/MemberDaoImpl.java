@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
  // 인터페이스로 메소드를 강제화 한 후 구현하여 사용하면 "강제성이 부여"된다
  
- /* 스프링 컨테이너가 스캐닝 기능을 이용하여 해당 클래스를 bean으로 등록할 수 있도록 어노테이션을
+ /* @Component : 스프링 컨테이너가 스캐닝 기능을 이용하여 해당 클래스를 bean으로 등록할 수 있도록 어노테이션을 설정
  * value 속성을 이용하여 bean의 id를 설정할 수 있으며, value는 생략 가능
  * 이름(id)를 설정하지 않으면 Class의 앞 글자를 소문자로 하여 bean을 생성함
  *
@@ -36,22 +36,23 @@ public class MemberDaoImpl implements MemberDao{
 		memberMap.put(2, new Member(2, "user02", "pass02", "유관순"));
 	}
 	
+	/* 매개변수로 전달 받은 회원 번호를 map에서 조회 후 해당 객체 리턴 */
 	@Override
 	public Member selectMember(int sequence) {
-		/* 매개변수로 전달 받은 회원 번호를 map에서 조회 후 해당 객체 리턴 */
 		return memberMap.get(sequence);
 	}
 
+	
+	/* 매개변수로 전달 받은 회원 정보를 map에 추가하고 성공 실패 여부를 boolean으로 리턴*/
 	@Override
 	public boolean insertMember(Member newMember) {
-		/* 매개변수로 전달 받은 회원 정보를 map에 추가하고 성공 실패 여부를 boolean으로 리턴*/
 		int before = memberMap.size();
-		// System.out.println(before); = 2
+		// System.out.println(before); = 2 (회원 추가 전 2명)
 		
 		memberMap.put(newMember.getSequence(), newMember);
 		
 		int after = memberMap.size();
-		// System.out.println(after); =3
+		// System.out.println(after); =3 (회원 추가 후 3명)
 		
 		// after와 before의 크기가 차이 나야 추가가 된 것
 		return after > before ? true : false;
