@@ -1,5 +1,6 @@
 package com.kh.chap05_di_annotation.section03_collection;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,15 @@ public class PokemonService {
 		this.pokemonMap = pokemonMap;
 	}
 	
+	public void pokemonAttack() {
+		Iterator<String> iter = pokemonMap.keySet().iterator(); 		
+		// 포케몬의 키를 set화 -> 키를 이더레이터화
+		
+		while(iter.hasNext()) {
+			String key = iter.next();
+			System.out.println("pokemonMap의 key : " + key);
+			pokemonMap.get(key).attack();
+		}
+	}
 	
 }

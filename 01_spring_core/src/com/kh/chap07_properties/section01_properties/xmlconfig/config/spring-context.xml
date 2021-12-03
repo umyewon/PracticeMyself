@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!-- context 사용 하기 위해 하단 Namespaces 가서 context 체크하기! -->
+	<!-- property 파일 읽어오는 코드 : location에 경로 작성 (풀 패키지명) -->
+	<context:property-placeholder location="product-info.properties"/>
+
+	<bean id="carpBread" class="com.kh.chap07_properties.common.Bread">
+		<constructor-arg name="name" value="${bread.carpbread.nam:붕어빵}" />
+		<constructor-arg name="price" value="${bread.carpbread.price:0}" />
+		<constructor-arg name="bakedDate" ref="today" />
+	</bean>
+
+	<bean id="today" class="java.util.Date"/>
+	
+	<bean id="milk" class="com.kh.chap07_properties.common.Beverage">
+		<constructor-arg name="name" value="${beverage.milk.name}"/>
+		<constructor-arg name="price" value="${beverage.milk.price}" />
+		<constructor-arg name="capacity" value="${beverage.milk.capacity}" />
+	</bean>
+	
+	<bean id="water" class="com.kh.chap07_properties.common.Beverage">
+		<constructor-arg name="name" value="${beverage.water.name}"/>
+		<constructor-arg name="price" value="${beverage.water.price}" />
+		<constructor-arg name="capacity" value="${beverage.water.capacity}" />
+	</bean>
+	
+	<bean id="cart" class="com.kh.chap07_properties.common.ShoppingCart" scope="prototype"/>
+	
+</beans>
