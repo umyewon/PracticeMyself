@@ -17,16 +17,16 @@
 		<constructor-arg name="sequence" value="1"/>
 		<constructor-arg name="name" value="홍길동"/>
 		<constructor-arg name="phone" value="010-1234-5678"/>
-		<constructor-arg name="email" value="hong123@gmail.com"/>
+		<constructor-arg name="email" value="hong123@gmail.com"/> -->
 		
-		다른 bean을 주입하여 생성자에 전달할 때 value 대신 ref를 사용함
-		<constructor-arg name="personalAccount">
+		<!-- 다른 bean을 주입하여 생성자에 전달할 때 value 대신 ref를 사용함
+			 ref는 속성으로 사용하거나, 태그로 사용하거나 택 1 -->
+		<!-- <constructor-arg name="personalAccount">
 			<ref bean="accountGenerator"/>
-		</constructor-arg>
-		<constructor-arg name="personalAccount" ref="accountGenerator"/>
+		</constructor-arg> -->
+		<!-- <constructor-arg name="personalAccount" ref="accountGenerator"/> -->
 		
-		
-	</bean> -->
+<!-- 	</bean>  -->
 	
 	
 	<!-- setter(를 이용한 의존성) 주입 : <property> 태그 사용  -->
@@ -36,7 +36,7 @@
 		<property name="phone" value="010-1234-5678"/>
 		<property name="email" value="hong123@gmail.com"/>
 		<property name="personalAccount" ref="accountGenerator" />
-	</bean>
+	</bean> 
 
 
 </beans>

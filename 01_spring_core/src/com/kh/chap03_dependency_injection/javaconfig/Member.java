@@ -3,10 +3,10 @@ package com.kh.chap03_dependency_injection.javaconfig;
 public class Member {
 	
 	private int sequence;
-	private String name;
-	private String phone;
-	private String email;
-	private Account personalAccount;
+	private String name;				// 이름
+	private String phone;				// 전화번호
+	private String email;				// 이메일
+	private Account personalAccount;	// 계좌 정보
 	
 	public Member() {}
 

@@ -10,7 +10,8 @@ public class Application {
 		ApplicationContext context
 			= new GenericXmlApplicationContext("com/kh/chap03_dependency_injection/xmlconfig/config/spring-context.xml");
 		
-		Member member = context.getBean(Member.class);
+		Member member = (Member)context.getBean("memberGenerator");
+		// Member member = (Member)context.getBean(Member.class);
 		System.out.println(member);
 		
 		System.out.println(member.getPersonalAccount().getBalance());

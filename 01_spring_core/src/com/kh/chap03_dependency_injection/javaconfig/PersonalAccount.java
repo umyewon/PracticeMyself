@@ -2,10 +2,10 @@ package com.kh.chap03_dependency_injection.javaconfig;
 
 public class PersonalAccount implements Account {
 
-	private int bankCode;
-	private String accNo;
-	private String accPwd;
-	private int balance;
+	private int bankCode;		// 번호
+	private String accNo;		// 계좌 번호
+	private String accPwd;		// 비밀번호
+	private int balance;		// 잔액
 	
 	public PersonalAccount(int bankCode, String accNo, String accPwd) {
 		super();
