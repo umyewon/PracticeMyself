@@ -29,9 +29,9 @@ public class BookDaoImpl implements BookDao{
 		// 바로 bookList로 리턴하면 Map타입이라 타입이 불일치 => Map에서 value만 가져옴 => Collection타입이 리턴됨
 	}
 
-	/* 도서 번호에 해당하는 Book 타입의 객체 리턴 */
+	/* 도서 번호로 해당하는 Book 타입의 객체 리턴 */
 	@Override
 	public Book selectOneBook(int sequence) {
-		return bookList.get(sequence);
+		return bookList.get(sequence);		// get으로 키값 넘김
 	}
 }
