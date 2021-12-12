@@ -1,10 +1,8 @@
 package com.kh.chap05_di_annotation.section04_resource;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component

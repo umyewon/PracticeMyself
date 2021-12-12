@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- property 파일 읽어오기 : context 스키마 추가 -->
+	<context:property-placeholder location="connection-info.properties"/>
+	
+	<!-- service,dao에 설정해둔 bean 스캐닝 할 basePackage 설정 -->
+	<context:component-scan base-package="com.kh.chap03_transaction.section02_aop.xmlconfig"/>
+
+	<!-- sqlSessionTemplate bean 등록 : 생성자 이용 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	<!--  sqlSessionFactoryBean bean 등록 : setter 이용 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="com/kh/chap03_transaction/section02_aop/xmlconfig/config/mybatis-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- BasicDataSource bean 등록 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${oracle.dev.driver}"/>
+		<property name="url" value="${oracle.dev.url}"/>
+		<property name="username" value="${oracle.dev.username}"/>
+		<property name="password" value="${oracle.dev.password}"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+
+	<!-- Namespaces 탭에서 mybatis-spring 스키마 추가  후 mapper스캔 base-package 설정
+		 base-package 하위에 있는 매퍼 탐색 후 proxy로 Impl을 구현함 => MenuDaoImpl 클래스를 생성할 필요가 없어짐
+	-->
+	<mybatis-spring:scan base-package="com.kh.chap03_transaction.section02_aop.xmlconfig.model.dao"/>
+
+	<!-- spring transaction 관리용 bean 등록  -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>	<!-- 어떤 DB연결 객체와 연결할건지 datasource로 셋  -->
+	</bean>
+	
+	<!-- Namespaces 탭에서 aop, tx 스키마 추가  -->
+	
+	<!-- AOP 설정 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<!-- 트랜잭션 관련 처리 메소드를 advice로 등록 : transactionManager빈 등록시 설정한 id값과 아래의 값이 일치해야함 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 
+				전파 옵션, 격리 레벨 설정. name을 제외하고는 기본값이 설정되어 있기 때문에 생략 가능.
+				read-only 속성은 읽기 전용을 의미
+				rollback-for=Exception : 모든 Exception 발생 시 롤백
+			 -->
+			<tx:method name="select*" read-only="true" rollback-for="Exception"/>
+			<tx:method name="regist*" propagation="REQUIRED" isolation="SERIALIZABLE" rollback-for="Exception"/>
+			<tx:method name="modify*" propagation="REQUIRED" isolation="SERIALIZABLE" rollback-for="Exception"/>
+			<tx:method name="remove*" propagation="REQUIRED" isolation="SERIALIZABLE" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!--  
+		AOP를 이용하여 위에서 정의한 txAdvice를 적용시키기 위해 아래 설정 추가
+		advice 객체가 weaving 될 시점(pointcut 등록)
+	 -->
+	 <aop:config proxy-target-class="true">
+	 	<aop:pointcut id="serviceMethod" expression="execution(* com.kh.chap03_transaction.section02_aop.xmlconfig.model.service..*(..))"/>
+	 	<aop:advisor id="transactionAdvisor" advice-ref="txAdvice" pointcut-ref="serviceMethod"/>	<!-- id명 정확히 일치시키기 -->
+	 </aop:config>
+	 
+</beans>
+
