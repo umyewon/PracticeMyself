@@ -9,7 +9,7 @@ public class Application {
 
 		/* 스프링 전용인 @Autowired 대신 자바 표준 어노테이션 @Resource 사용 테스트 
 		 * 스프링이 @Autowired를 선보이고 얼마 지나지 않아 자바 진영에서도 동일한 기능의 어노테이션을 여러개 표준화 함
-		 * => @Resources, @Inject, @Named
+		 * => @Resource, @Inject, @Named
 		 * */
 		
 		ApplicationContext context 	

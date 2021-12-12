@@ -12,8 +12,8 @@ public class PokemonService {
 	
 	/* 1. 필드 주입 */
 	/* 같은 타입의 여러 bean을 collection으로 받았을 때 @Named로 bean 선택 가능 */
-	// @Inject
-	// @Named("pikachu")
+//	@Inject
+//	@Named("pikachu")
 	private Pokemon pokemon;
 	
 	/* 2. 생성자 주입 
