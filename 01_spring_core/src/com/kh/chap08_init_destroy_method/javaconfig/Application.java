@@ -35,8 +35,11 @@ public class Application {
 		System.out.println("cart1의 hashcode : " + cart1.hashCode());
 		System.out.println("cart2의 hashcode : " + cart2.hashCode());
 		
+		/* init-method는 어떠한 설정을 하지 않아도 실행되는 순간 동작함 
+		destroy-method는 설정을 하지 않으면 동작하지 않음*/
+		
 		/* 강제로 컨테이너를 종료시키면 폐기 메소드(destroy-method)가 동작하는 것을 확인할 수 있음*/
-		((AnnotationConfigApplicationContext)context).close();	// context 다운 캐스팅 필요
+		((AnnotationConfigApplicationContext)context).close();	// 실제 구현 클래스로 context 다운 캐스팅 필요
 		
 	}
 
