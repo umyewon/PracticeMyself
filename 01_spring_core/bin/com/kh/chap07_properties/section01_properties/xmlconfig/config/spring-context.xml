@@ -11,7 +11,7 @@
 	<context:property-placeholder location="product-info.properties"/>
 
 	<bean id="carpBread" class="com.kh.chap07_properties.common.Bread">
-		<constructor-arg name="name" value="${bread.carpbread.nam:붕어빵}" />
+		<constructor-arg name="name" value="${bread.carpbread.nam:붕어빵}" /> 	<!-- 키값을 잘못 썼기 때문에 대체값이 출력됨 -->
 		<constructor-arg name="price" value="${bread.carpbread.price:0}" />
 		<constructor-arg name="bakedDate" ref="today" />
 	</bean>
@@ -19,7 +19,7 @@
 	<bean id="today" class="java.util.Date"/>
 	
 	<bean id="milk" class="com.kh.chap07_properties.common.Beverage">
-		<constructor-arg name="name" value="${beverage.milk.name}"/>
+		<constructor-arg name="name" value="${beverage.milk.name}"/> 
 		<constructor-arg name="price" value="${beverage.milk.price}" />
 		<constructor-arg name="capacity" value="${beverage.milk.capacity}" />
 	</bean>

@@ -33,8 +33,6 @@ public class Application {
 		
 		System.out.println("cart2에 담긴 물건 : " + cart2.getItems());
 		
-		System.out.println("cart1의 hashcode : " + cart1.hashCode());
-		System.out.println("cart2의 hashcode : " + cart2.hashCode());
 	}
 
 }
