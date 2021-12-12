@@ -16,10 +16,11 @@ public class Application {
 		ApplicationContext context
 			= new AnnotationConfigApplicationContext(ContextConfiguration.class);
 		
+		// getMessage(파라미터) : "키 값", null(프로퍼티에 전달할 값 있을 때 작성, 없으면 null), locale
 		// String error404Message = context.getMessage("error.404", null, Locale.US);	
-		// => 파라미터 : "키 값", null(프로퍼티에 전달할 값 있을 때 작성, 없으면 null), locale
 		String error404Message = context.getMessage("error.404", null, Locale.KOREA);
 		
+		// 프로퍼티 파일에서 {0}{1}로 작성했던 값을 두번째 매개변수로 값 전달
 		//String error500Message = context.getMessage("error.500", new Object[] {"yewon", new Date()}, Locale.US);	
 		// 프로퍼티 파일에서 어퍼스트로피(')는 이스케이핑 처리 되므로 두번 작성
 		String error500Message = context.getMessage("error.500", new Object[] {"예원", new Date()}, Locale.KOREA);

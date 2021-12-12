@@ -8,9 +8,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 public class ContextConfiguration {
 
 	@Bean
-	public ReloadableResourceBundleMessageSource messageSource() {	// spring 내에 만들어져있는 클래스 사용
+	public ReloadableResourceBundleMessageSource messageSource() {	// spring 내에 만들어져있는 클래스,메소드 사용
 		
-		/* 접속하는 세션의 locale에 따라 '자동으로' 재로딩하는 용도의 MessageSource 구현체 (따라서 파일명만 locale 명시해서 잘 작성하면 자동으로 로딩 해줌)*/
+		/* 접속하는 세션의 locale에 따라 '자동으로' 재로딩하는 용도의 MessageSource 구현체 (따라서 파일명만 locale 명시해서 잘 작성하면 자동으로 로딩해줌)*/
 		ReloadableResourceBundleMessageSource messageSource
 			= new ReloadableResourceBundleMessageSource();
 		

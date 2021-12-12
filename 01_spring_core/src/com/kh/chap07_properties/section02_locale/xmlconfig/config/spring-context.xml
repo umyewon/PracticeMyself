@@ -4,9 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	
-	<!-- id값은 메소드명과 일치시키고 id명 중요함 틀리면 안 됨!!! -->
+	<!-- id값은 ReloadableResourceBundleMessageSource클래스가 가진 메소드명과 일치시키고 id명 중요함 틀리면 안 됨!!! -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property  name="basename" value="message"/>
+		<!-- javaconfig에서 작성한것과 비교했을 때 setter를 사용했으므로
+		<constructor-arg>가 아닌 <property>태그 사용 -->
+		<property name="basename" value="message"/>
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
