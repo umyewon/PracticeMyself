@@ -17,7 +17,7 @@ public class AroundAttendingAdvice {
 	/* Around Advice는 가장 강력한 어드바이스로 조인 포인트를 완전히 장악하기 떄문에
 	 * 앞에서 살펴 본 어드바이스 모두 Around Advice로 조합할 수 있으며
 	 * 원본 조인 포인트를 언제 실행할지, 실행 자체를 안 할지 여부도 제어 가능함
-	 * Around Advice의 조인 포인트 매개변수는 ProceedingJoinPoing로 고정
+	 * Around Advice의 조인 포인트 매개변수는 ProceedingJoinPoint로 고정
 	 * JoinPoint의 하위 인터페이스로 원본 조인 포인트의 진행 시점을 제어할 수 있음
 	 * *** 조인 포인트를 진행하는 호출을 잊는 경우가 자주 발생하므로 주의, 
 	 * 최소한의 요건을 충족하면서 가장 기능이 약한 어드바이스를 쓰는 것이 바람직 *** 

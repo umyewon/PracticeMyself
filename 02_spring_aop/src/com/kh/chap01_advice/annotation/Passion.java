@@ -2,7 +2,7 @@ package com.kh.chap01_advice.annotation;
 
 public class Passion {
 
-	private int score;
+	private int score;	// 열정 점수
 	
 	public Passion(int score) {
 		this.score = score;

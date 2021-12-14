@@ -2,9 +2,9 @@ package com.kh.chap01_advice.annotation;
 
 public class AchievementResult {
 
-	private int understandingScore;
-	private int satisfactionScore;
-	private double employeementRate;
+	private int understandingScore;		// 이해도
+	private int satisfactionScore;		// 성취도
+	private double employeementRate;	// 취업률
 	
 	public AchievementResult(int understandingScore, int satisfactionScore, double employeementRate) {
 		super();
