@@ -17,12 +17,12 @@ public class Application {
 		}
 		
 		System.out.println("================== NormalStudent ==================");
-		Student normalStudent = context.getBean("normalStudent", NormalStudent.class);
+		Student normalStudent = context.getBean("normalStudent", Student.class);
 		AchievementResult normalResult = normalStudent.study(new Passion(10));
 		System.out.println("NormalStudent Result : " + normalResult);
 		
 		System.out.println("================== BestStudent ==================");
-		Student bestStudent = context.getBean("bestStudent", BestStudent.class);
+		Student bestStudent = context.getBean("bestStudent", Student.class);
 		AchievementResult bestResult = bestStudent.study(new Passion(10));
 		System.out.println("BestStudent Result : " + bestResult);
 		

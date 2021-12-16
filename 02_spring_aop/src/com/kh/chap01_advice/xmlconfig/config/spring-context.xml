@@ -23,19 +23,19 @@
 	<aop:config proxy-target-class="true">
 		<!-- 공통으로 사용할 포인트컷 정의 -->
 		<aop:pointcut expression="execution(* com.kh.chap01_advice.xmlconfig..*(..))" id="studyPointcut"/>
-		<aop:aspect id="studyAdvisor" ref="beforeAdvice">
-			<aop:before method="beforeAttending" pointcut-ref="studyPointcut"/>
+		<aop:aspect id="studyAdvisor" ref="beforeAdvice"> <!-- aspect 아이디는 사용자 정의 아래도 다 동일한 aspect, ref만 변경 -->
+			<aop:before method="beforeAttending" pointcut-ref="studyPointcut"/>	<!-- pointcut 위에 정의한 것 참조 -->
 		</aop:aspect>
 		<aop:aspect id="studyAdvisor" ref="afterAdvice">
 			<aop:after method="afterAttending" pointcut-ref="studyPointcut"/>
 		</aop:aspect>
 		<aop:aspect id="studyAdvisor" ref="afterReturningAdvice">
 			<aop:after-returning method="afterReturningAttendingAdvice" pointcut-ref="studyPointcut"
-			returning="result"/>
+			returning="result"/>	<!-- 어노테이션 작성 시와 동일하게 받아올 객체를 작성  -->
 		</aop:aspect>
 		<aop:aspect id="studyAdvisor" ref="afterThrowingAdvice">
 			<aop:after-throwing method="afterThrowingAttendingAdvice" pointcut-ref="studyPointcut"
-			throwing="exception"/>
+			throwing="exception"/>	<!-- 어노테이션 작성시와 동일 -->
 		</aop:aspect>
 		<aop:aspect id="studyAdvisor" ref="aroundAdvice">
 			<aop:around method="aroundAttending" pointcut-ref="studyPointcut"/>
