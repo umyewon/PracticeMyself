@@ -21,7 +21,8 @@ public class MenuServiceImpl implements MenuService{
 	
 	@Override
 	public List<Menu> selectMenuList() {
-		return sqlSession.getMapper(MenuDao.class).selectMenuList();		// menuDao.xml의 selectMenuList가 수행됨
+		return sqlSession.getMapper(MenuDao.class).selectMenuList();		
+		// => menuDao.xml의 selectMenuList가 수행됨
 	}
 
 }
