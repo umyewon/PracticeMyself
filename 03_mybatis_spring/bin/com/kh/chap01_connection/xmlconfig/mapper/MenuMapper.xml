@@ -13,6 +13,7 @@
 	</resultMap>
 	
 	
+	
 	<select id="selectMenuList" resultMap="menuResultMap">
 		SELECT
 				MENU_CODE

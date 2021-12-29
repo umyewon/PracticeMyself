@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- property 파일 읽어오기 : context 스키마 추가 -->
+	<!-- property 파일 읽어오기 (DB연결정보) : context 스키마 추가 -->
 	<context:property-placeholder location="connection-info.properties"/>
 	
 	<!-- service,dao에 설정해둔 bean 스캐닝 할 basePackage 설정 -->
