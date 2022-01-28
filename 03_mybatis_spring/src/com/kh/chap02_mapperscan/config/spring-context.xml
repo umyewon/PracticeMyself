@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- DB연결정보 property 파일 읽어오기 : context 스키마 추가 -->
+	<context:property-placeholder location="connection-info.properties"/>
+	
+	<!-- service,dao에 설정해둔 bean 스캐닝 할 basePackage 설정 -->
+	<context:component-scan base-package="com.kh.chap02_mapperscan"/>
+
+	<!-- sqlSessionTemplate bean 등록 : 생성자 이용 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	<!--  sqlSessionFactoryBean bean 등록 : setter 이용 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="com/kh/chap02_mapperscan/config/mybatis-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- BasicDataSource bean 등록 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${oracle.dev.driver}"/>
+		<property name="url" value="${oracle.dev.url}"/>
+		<property name="username" value="${oracle.dev.username}"/>
+		<property name="password" value="${oracle.dev.password}"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+
+	<!-- Namespaces 탭에서 mybatis-spring 스키마 추가  후 mapper스캔 base-package 설정
+		 base-package 하위에 있는 매퍼 탐색 후 proxy로 Impl을 구현함 => MenuDaoImpl 클래스를 생성할 필요가 없어짐
+	-->
+	<mybatis-spring:scan base-package="com.kh.chap02_mapperscan.model.dao"/>
+
+</beans>
+

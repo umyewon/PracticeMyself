@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	<!-- 마이바티스 홈페이지에서 가져오기 -->
+<mapper namespace="com.kh.chap03_transaction.section02_aop.javaconfig.model.dao.OrderMapper">	<!-- dao인터페이스 경로와 동일하게 수정 -->
+	
+	<insert id="insertOrder" parameterType="com.kh.chap03_transaction.section02_aop.javaconfig.model.vo.Order">
+		INSERT 
+			INTO TBL_ORDER
+		  (
+		  	 ORDER_CODE
+		   , ORDER_DATE
+		   , ORDER_TIME
+		   , TOTAL_ORDER_PRICE 
+		  )
+		  VALUES
+		 (
+		 	SEQ_ORDER_CODE.NEXTVAL
+		  , #{ date }
+		  , #{ time }
+		  , #{ totalPrice }	 
+		 )
+	</insert>
+
+	<insert id="insertOrderMenu" parameterType="com.kh.chap03_transaction.section02_aop.javaconfig.model.vo.OrderMenu">
+		<selectKey keyProperty="code" order="BEFORE" resultType="_int">	
+		<!-- selectKey 태그 : insert태그 하위에 있는 속성, keyProperty=인서트 시 사용할 변수명 order=BEFORE인서트 수행 전 수행 -->
+			SELECT
+					SEQ_ORDER_CODE.CURRVAL
+			   FROM DUAL
+		</selectKey>
+		
+		INSERT
+			INTO TBL_ORDER_MENU
+		  (
+		  	 ORDER_CODE
+		   , MENU_CODE
+		   , ORDER_AMOUNT
+		  )
+		  VALUES
+		 (
+		 	#{ code }		<!-- selectKey로 조회해온 코드 -->
+		  , #{ menuCode }
+		  , #{ amount }
+		 )
+	</insert>
+</mapper>

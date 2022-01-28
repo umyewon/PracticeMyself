@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">		<!-- 마이 바티스 홈페이지에서 dtd 가져오기 -->
+<configuration>
+	<!-- 환경설정 부분은 스프링 dataSource에 이미 담겨 있음 -->
+	
+	<mappers> <!-- 매퍼 등록 -->
+		<mapper resource="com/kh/chap01_connection/xmlconfig/mapper/MenuMapper.xml"/>
+	</mappers>
+ 
+</configuration>
