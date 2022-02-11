@@ -1,9 +1,9 @@
 package chap12.sec05.wait_notify;
 
-public class ThreadA extends Thread{
+public class ThreadB extends Thread{
 	private WorkObject workObject;
 
-	public ThreadA(WorkObject workObject) {
+	public ThreadB(WorkObject workObject) {
 		super();
 		this.workObject = workObject;
 	}
@@ -11,7 +11,7 @@ public class ThreadA extends Thread{
 	@Override
 	public void run() {
 		for(int i = 0; i < 10; i++ ) {
-			workObject.methodA();
+			workObject.methodB();
 		}
 	
 	}

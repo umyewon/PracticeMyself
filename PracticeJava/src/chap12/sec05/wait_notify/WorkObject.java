@@ -1,11 +1,19 @@
 package chap12.sec05.wait_notify;
 
 public class WorkObject {
-	public void methodA() {
+	public synchronized void methodA() {
 		System.out.println("ThreadA의 methodA() 작업 실행");
+		notify();
+		try {
+			wait();
+		} catch (InterruptedException e) {}
 	}
 	
-	public void methodB() {
+	public synchronized void methodB() {
 		System.out.println("ThreadB의 methodB() 작업 실행");
+		notify();
+		try {
+			wait();
+		} catch (InterruptedException e) {}
 	}
 }
